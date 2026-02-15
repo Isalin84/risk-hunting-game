@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors - Best Practice */
+  --color-brand-dark: #0B1D3A;
+  --color-brand-steel: #1E3A5F;
+  --color-brand-steel-light: #2A4F7A;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-hover: #C4A032;
+  --color-brand-gold-soft: #E8D48B;
+  --color-brand-beige: #F5DEB3;
+  --color-brand-bg: #FAF9F6;
+
+  /* Game Colors */
+  --color-game-success: #22C55E;
+  --color-game-danger: #EF4444;
+  --color-game-warning: #F59E0B;
+
+  /* shadcn/ui CSS Variables */
+  --color-background: #FAF9F6;
+  --color-foreground: #0B1D3A;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0B1D3A;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0B1D3A;
+  --color-primary: #0B1D3A;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #F5DEB3;
+  --color-secondary-foreground: #0B1D3A;
+  --color-muted: #f1ede4;
+  --color-muted-foreground: #5a6577;
+  --color-accent: #D4AF37;
+  --color-accent-foreground: #0B1D3A;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #E8D48B;
+  --color-input: #e2ddd2;
+  --color-ring: #D4AF37;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* Fonts */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Lora', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Game-specific animations */
+@keyframes foundPulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@keyframes penaltyFlash {
+  0% { background-color: rgba(239, 68, 68, 0.3); }
+  100% { background-color: transparent; }
+}
+
+@keyframes streakPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes hintGlow {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  50% { box-shadow: 0 0 20px 8px rgba(245, 158, 11, 0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
+
+@keyframes progressPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}

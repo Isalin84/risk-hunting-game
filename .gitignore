@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Environment
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Assets (large files - served from public but don't commit binaries)
+public/assets/*.mp4
+public/assets/*.mp3
+public/assets/good/
+public/assets/bad/
+public/assets/*.jpg
