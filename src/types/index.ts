@@ -29,11 +29,18 @@ export interface Sound {
   created_at?: string;
 }
 
+export interface Profile {
+  id: string;
+  nickname: string;
+  created_at?: string;
+}
+
 export interface LeaderboardEntry {
   id: string;
   player_name: string;
   score: number;
   time_seconds: number;
+  user_id?: string | null;
   created_at?: string;
 }
 

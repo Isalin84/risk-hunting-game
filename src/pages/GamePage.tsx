@@ -4,6 +4,7 @@ import { useTimer } from '@/hooks/useTimer';
 import { useLevels } from '@/hooks/useLevels';
 import { useSounds } from '@/hooks/useSounds';
 import { useLeaderboard } from '@/hooks/useLeaderboard';
+import { useAuth } from '@/hooks/useAuth';
 import { GameHUD } from '@/components/game/GameHUD';
 import { GameContainer } from '@/components/game/GameContainer';
 import { IntroModal } from '@/components/game/IntroModal';
@@ -19,6 +20,7 @@ export function GamePage() {
   const { levels, loading: levelsLoading } = useLevels();
   const { playRandom, playBackground, stopBackground } = useSounds();
   const { entries, addEntry, fetchEntries } = useLeaderboard();
+  const { session, profile } = useAuth();
   const timer = useTimer();
 
   const game = useGameState();
@@ -90,11 +92,12 @@ export function GamePage() {
         player_name: name,
         score: game.totalScore,
         time_seconds: game.totalTimeElapsed,
+        user_id: session?.user?.id || null,
       });
       await fetchEntries();
       game.setPhase('LEADERBOARD');
     },
-    [addEntry, fetchEntries, game],
+    [addEntry, fetchEntries, game, session],
   );
 
   const handlePlayAgain = useCallback(() => {
@@ -173,6 +176,7 @@ export function GamePage() {
         open={game.phase === 'GAME_OVER'}
         totalScore={game.totalScore}
         totalTime={game.totalTimeElapsed}
+        nickname={profile?.nickname}
         onSave={handleSaveResult}
       />
 
