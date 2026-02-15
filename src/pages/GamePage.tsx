@@ -13,6 +13,7 @@ import { RiskFoundModal } from '@/components/game/RiskFoundModal';
 import { LevelCompleteModal } from '@/components/game/LevelCompleteModal';
 import { GameOverModal } from '@/components/game/GameOverModal';
 import { LeaderboardModal } from '@/components/game/LeaderboardModal';
+import { AuthRequiredScreen } from '@/components/game/AuthRequiredScreen';
 import { GAME_CONFIG } from '@/lib/constants';
 import type { Hazard } from '@/types';
 
@@ -20,7 +21,7 @@ export function GamePage() {
   const { levels, loading: levelsLoading } = useLevels();
   const { playRandom, playBackground, stopBackground } = useSounds();
   const { entries, addEntry, fetchEntries } = useLeaderboard();
-  const { session, profile } = useAuth();
+  const { session, profile, isAuthenticated, loading: authLoading } = useAuth();
   const timer = useTimer();
 
   const game = useGameState();
@@ -105,12 +106,16 @@ export function GamePage() {
     game.resetGame();
   }, [timer, game]);
 
-  if (levelsLoading) {
+  if (levelsLoading || authLoading) {
     return (
       <div className="flex-1 flex items-center justify-center bg-brand-bg">
         <div className="text-brand-dark font-heading text-xl animate-pulse">Loading...</div>
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return <AuthRequiredScreen />;
   }
 
   if (levels.length === 0) {

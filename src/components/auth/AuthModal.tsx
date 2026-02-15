@@ -11,11 +11,12 @@ import { LogIn, UserPlus, Mail, KeyRound, ArrowLeft, CheckCircle } from 'lucide-
 interface AuthModalProps {
   open: boolean;
   onClose: () => void;
+  defaultTab?: 'login' | 'register';
 }
 
 type AuthView = 'main' | 'reset';
 
-export function AuthModal({ open, onClose }: AuthModalProps) {
+export function AuthModal({ open, onClose, defaultTab = 'login' }: AuthModalProps) {
   const { t } = useTranslation();
   const { signIn, signUp, resetPassword } = useAuth();
 
@@ -179,7 +180,7 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-md bg-white border-brand-gold">
-        <Tabs defaultValue="login" className="mt-2">
+        <Tabs defaultValue={defaultTab} key={defaultTab} className="mt-2">
           <TabsList className="grid w-full grid-cols-2 bg-brand-bg border border-brand-gold-soft">
             <TabsTrigger
               value="login"

@@ -73,7 +73,13 @@
     "registrationError": "Registration error",
     "resetError": "Error sending reset link",
     "minChars": "At least {{count}} characters",
-    "nicknamePlaceholder": "Your game nickname"
+    "nicknamePlaceholder": "Your game nickname",
+    "requiredTitle": "Sign in to play",
+    "requiredDescription": "You need to sign in or create an account to play the game. Your results will be saved to the leaderboard.",
+    "requiredHint": "Registration is free and takes less than a minute",
+    "featureFind": "Find risks",
+    "featureCompete": "Compete",
+    "featureLeaderboard": "Leaderboard"
   },
   "admin": {
     "login": "Admin Login",
